@@ -30,7 +30,7 @@ module Danger
         it 'error' do
           plugin.check
           expect(dangerfile.status_report[:errors].length).to be == 1
-          expect(dangerfile.status_report[:errors][0]).to eq 'Gemfile.lock should be committed'
+          expect(dangerfile.status_report[:errors][0]).to eq '`Gemfile` has changed. `Gemfile.lock` should be committed.'
         end
       end
 
@@ -40,8 +40,8 @@ module Danger
         it 'multiple errors' do
           plugin.check
           expect(dangerfile.status_report[:errors].length).to be == 2
-          expect(dangerfile.status_report[:errors]).to include 'Gemfile.lock should be committed'
-          expect(dangerfile.status_report[:errors]).to include 'Cartfile.resolved should be committed'
+          expect(dangerfile.status_report[:errors]).to include '`Gemfile` has changed. `Gemfile.lock` should be committed.'
+          expect(dangerfile.status_report[:errors]).to include '`Cartfile` has changed. `Cartfile.resolved` should be committed.'
         end
       end
 
@@ -61,7 +61,7 @@ module Danger
           plugin.check(warning: true)
           expect(dangerfile.status_report[:warnings].length).to be == 1
           expect(dangerfile.status_report[:errors].length).to be == 0
-          expect(dangerfile.status_report[:warnings][0]).to eq 'Gemfile.lock should be committed'
+          expect(dangerfile.status_report[:warnings][0]).to eq '`Gemfile` has changed. `Gemfile.lock` should be committed.'
         end
       end
     end
