@@ -12,7 +12,6 @@ module Danger
   # You should replace these comments with a public description of your library.
   
   class DangerLockLibraryVersions < Plugin
-
     def check
       modified_files = git.modified_files
       lock_list.keys.each do |file|
@@ -23,7 +22,7 @@ module Danger
     end
 
     def lock_list
-      @list ||= YAML.load_file('./list.yml')
+      @list ||= YAML.load_file('./lib/lock_library_versions/list.yml')
     end
   end
 end
