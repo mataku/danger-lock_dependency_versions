@@ -13,22 +13,23 @@ module Danger
     describe "#check" do
       let(:modified_files) { [] }
 
+      shared_examples 'no errors' do
+        it do
+          plugin.check
+          expect(dangerfile.status_report[:errors].length).to be == 0
+        end
+      end
+
       before do
         allow_any_instance_of(git_plugin).to receive(:modified_files).and_return(modified_files)
       end
 
-      it do
-        plugin.check
-        expect(dangerfile.status_report[:errors].length).to be == 0
-      end
+      it_behaves_like 'no errors'
 
       context 'files which managed library versions are not included' do
         let(:modified_files) { ['README.md'] }
 
-        it 'no errors' do
-          plugin.check
-          expect(dangerfile.status_report[:errors].length).to be == 0
-        end
+        it_behaves_like 'no errors'
       end
 
       context 'file which managed library versions are included' do
@@ -55,10 +56,13 @@ module Danger
       context 'with lock file' do
         let(:modified_files) { ['Gemfile', 'Gemfile.lock'] }
 
-        it 'no errors' do
-          plugin.check
-          expect(dangerfile.status_report[:errors].length).to be == 0
-        end
+        it_behaves_like 'no errors'
+      end
+
+      context 'only lock file has committed' do
+        let(:modified_files) { ['Gemfile.lock'] }
+
+        it_behaves_like 'no errors'
       end
 
       context 'warning: true' do
