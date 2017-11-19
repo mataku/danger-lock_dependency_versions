@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = LockLibraryVersions::VERSION
   spec.authors       = ['Takuma Homma']
   spec.email         = ['nagomimatcha@gmail.com']
-  spec.description   = %q{A short description of danger-lock_library_versions_helper.}
-  spec.summary       = %q{A longer description of danger-lock_library_versions_helper.}
-  spec.homepage      = 'https://github.com/Takuma Homma/danger-lock_library_versions_helper'
+  spec.description   = %q{A Danger plugin to check whether version lockfile is committed or not}
+  spec.summary       = %q{A Danger plugin to check whether version lockfile is committed or not}
+  spec.homepage      = 'https://github.com/Takuma Homma/danger-lock_library_versions'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($/)
