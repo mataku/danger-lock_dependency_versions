@@ -1,13 +1,21 @@
 require File.expand_path("../spec_helper", __FILE__)
+require 'yaml'
 
 module Danger
-  describe Danger::DangerLockLibraryVersions do
+  describe Danger::DangerLockDependencyVersions do
     let(:git_plugin) { Danger::DangerfileGitPlugin }
     let(:dangerfile) { testing_dangerfile }
-    let(:plugin) { dangerfile.lock_library_versions }
+    let(:plugin) { dangerfile.lock_dependency_versions }
+    let(:load_data) do
+      {
+        "Gemfile" => "Gemfile.lock",
+        "Cartfile" => "Cartfile.resolved"
+      }
+    end
+
 
     it "should be a plugin" do
-      expect(Danger::DangerLockLibraryVersions < Danger::Plugin).to be_truthy
+      expect(Danger::DangerLockDependencyVersions < Danger::Plugin).to be_truthy
     end
 
     describe "#check" do
@@ -21,6 +29,7 @@ module Danger
       end
 
       before do
+        allow(YAML).to receive(:load_file).with('.lock_list.yml').and_return(load_data)
         allow_any_instance_of(git_plugin).to receive(:modified_files).and_return(modified_files)
       end
 
