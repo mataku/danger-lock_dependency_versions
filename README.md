@@ -1,6 +1,6 @@
 # danger-lock_library_versions
 
-A Danger plugin for managing library versions.
+A [Danger](http://danger.systems/ruby/) plugin for managing library versions.
 
 ## Installation
 
