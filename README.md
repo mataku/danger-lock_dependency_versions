@@ -2,8 +2,9 @@
 
 # danger-lock_library_versions
 
-A [Danger](http://danger.systems/ruby/) plugin for managing library versions.  
-Check whether lockfile (e.g., Gemfile.lock, Cartfile.resolved) has committed or not when file which manages dependencies has committed.
+A [Danger](http://danger.systems/ruby/) plugin for managing library versions.
+
+Check whether lockfile (e.g., `Gemfile.lock`, `Cartfile.resolved`) has committed or not when file which manages dependencies has committed.
 
 ## Installation
 
@@ -27,7 +28,7 @@ if lock file has not committed to version control, post a failure comment by Dan
 check(warning: boolean)
 ```
 
-if `warning: true`, set comment status to warning. (default: false)
+if specify `warning: true`, set comment status to warning. (default: false)
 
 ## Supports
 - Gemfile
