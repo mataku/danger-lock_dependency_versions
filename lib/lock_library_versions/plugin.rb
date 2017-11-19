@@ -16,7 +16,7 @@ module Danger
     def check
       modified_files = git.modified_files
       lock_list.keys.each do |file|
-        modified_files.include?(file)
+        if modified_files.include?(file)
           fail("#{lock_list[file]} should be committed")
         end
       end
