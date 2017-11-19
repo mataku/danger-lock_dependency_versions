@@ -1,15 +1,25 @@
 module Danger
   class DangerLockLibraryVersions < Plugin
-    def check
+    def check(config = nil)
+      config = config.is_a?(Hash) ? config : { }
+      warning_mode = config[:warning] || false
       files = git.modified_files
       lock_list.keys.each do |file|
         if files.include?(file.to_s) && !(files.include?(lock_list[file]))
-          fail("#{lock_list[file]} should be committed")
+          message(warning_mode, file)
         end
       end
     end
 
     private
+
+    def message(warning_mode, file)
+      if warning_mode
+        warn("#{lock_list[file]} should be committed")
+      else
+        fail("#{lock_list[file]} should be committed")
+      end
+    end
 
     def lock_list
       {
