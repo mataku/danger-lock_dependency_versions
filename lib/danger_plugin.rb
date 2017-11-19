@@ -1,1 +1,1 @@
-require "lock_library_versions/plugin"
+require "lock_dependency_versions/plugin"

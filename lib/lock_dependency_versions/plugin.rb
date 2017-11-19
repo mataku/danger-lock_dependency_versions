@@ -1,11 +1,13 @@
+require 'yaml'
+
 module Danger
-  class DangerLockLibraryVersions < Plugin
+  class DangerLockDependencyVersions < Plugin
     def check(config = nil)
       config = config.is_a?(Hash) ? config : { }
       warning_mode = config[:warning] || false
       files = git.modified_files
       lock_list.keys.each do |file|
-        if files.include?(file.to_s) && !(files.include?(lock_list[file]))
+        if files.include?(file) && !(files.include?(lock_list[file]))
           comment(warning_mode, file)
         end
       end
@@ -22,15 +24,11 @@ module Danger
     end
 
     def error_message(file)
-      "`#{file.to_s}` has changed. `#{lock_list[file]}` should be committed."
+      "`#{file}` has changed. `#{lock_list[file]}` should be committed."
     end
 
     def lock_list
-      {
-        'Gemfile': 'Gemfile.lock',
-        'Cartfile': 'Cartfile.resolved',
-        'Podfile': 'Podfile.lock'
-      }
+      YAML.load_file('.lock_list.yml')
     end
   end
 end

@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'lock_library_versions/gem_version.rb'
+require 'lock_dependency_versions/gem_version.rb'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'danger-lock_library_versions'
-  spec.version       = LockLibraryVersions::VERSION
+  spec.name          = 'danger-lock_dependency_versions'
+  spec.version       = LockDependencyVersions::VERSION
   spec.authors       = ['mataku']
   spec.email         = ['nagomimatcha@gmail.com']
-  spec.description   = %q{A Danger plugin to check whether version lockfile is committed or not when file which manages dependencies has committed.}
-  spec.summary       = %q{A Danger plugin to check whether version lockfile is committed or not when file which manages dependencies has committed.}
-  spec.homepage      = 'https://github.com/mataku/danger-lock_library_versions'
+  spec.description   = %q{A Danger plugin to check files which should be committed.}
+  spec.summary       = %q{A Danger plugin to check files which should be committed.}
+  spec.homepage      = 'https://github.com/mataku/danger-lock_dependency_versions'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($/)
