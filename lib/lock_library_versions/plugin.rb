@@ -15,9 +15,9 @@ module Danger
 
     def message(warning_mode, file)
       if warning_mode
-        warn("#{lock_list[file]} should be committed")
+        warn("`#{lock_list[file]}` should be committed.")
       else
-        fail("#{lock_list[file]} should be committed")
+        fail("`#{lock_list[file]}` should be committed.")
       end
     end
 
