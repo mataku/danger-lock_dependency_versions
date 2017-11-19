@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/mataku/danger-lock_library_versions.svg?branch=master)](https://travis-ci.org/mataku/danger-lock_library_versions)
+[![Build Status](https://travis-ci.org/mataku/danger-lock_dependency_versions.svg?branch=master)](https://travis-ci.org/mataku/danger-lock_dependency_versions)
 
-# danger-lock_library_versions
+# danger-lock_dependency_versions
 
 A [Danger](http://danger.systems/ruby/) plugin for managing dependency files.
 
