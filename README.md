@@ -20,10 +20,18 @@ lock_library_versions.check
 
 if lock file has not committed to version control, post a failure comment by Danger.
 
-### methods
+### Methods
 
 ```
 check(warning: boolean)
 ```
 
 if `warning: true`, set comment status to warning. (default: false)
+
+## Supports
+- Gemfile
+  - Gemfile.lock
+- Cartfile
+  - Cartfile.resolved
+- Podfile
+  - Podfile.lock
