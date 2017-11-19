@@ -9,7 +9,7 @@ A [Danger](http://danger.systems/ruby/) plugin for managing library versions.
 Add this line to your Gemfile:
 
 ```
-$ gem install danger-lock_library_versions
+$ gem danger-lock_library_versions
 ```
 
 ## Usage
