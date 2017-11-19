@@ -1,1 +1,1 @@
-require "lock_library_versions_helper/gem_version"
+require "lock_library_versions/gem_version"
