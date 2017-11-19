@@ -11,8 +11,15 @@ module Danger
     end
 
     describe "#check" do
+      let(:modified_files) { [] }
+
       before do
         allow_any_instance_of(git_plugin).to receive(:modified_files).and_return(modified_files)
+      end
+
+      it do
+        plugin.check
+        expect(dangerfile.status_report[:errors].length).to be == 0
       end
 
       context 'files which managed library versions are not included' do
@@ -27,7 +34,7 @@ module Danger
       context 'file which managed library versions are included' do
         let(:modified_files) { ['README.md', 'Gemfile'] }
 
-        it 'error' do
+        it 'an error has occurred' do
           plugin.check
           expect(dangerfile.status_report[:errors].length).to be == 1
           expect(dangerfile.status_report[:errors][0]).to eq '`Gemfile` has changed. `Gemfile.lock` should be committed.'
@@ -37,7 +44,7 @@ module Danger
       context 'files which managed library versions are included' do
         let(:modified_files) { ['Cartfile', 'Gemfile'] }
 
-        it 'multiple errors' do
+        it 'multiple errors have occurred' do
           plugin.check
           expect(dangerfile.status_report[:errors].length).to be == 2
           expect(dangerfile.status_report[:errors]).to include '`Gemfile` has changed. `Gemfile.lock` should be committed.'
