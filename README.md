@@ -1,15 +1,15 @@
-# danger-lock_library_versions_helper
+# danger-lock_library_versions
 
-A description of danger-lock_library_versions_helper.
+A description of danger-lock_library_versions.
 
 ## Installation
 
-    $ gem install danger-lock_library_versions_helper
+    $ gem install danger-lock_library_versions
 
 ## Usage
 
     Methods and attributes from this plugin are available in
-    your `Dangerfile` under the `lock_library_versions_helper` namespace.
+    your `Dangerfile` under the `lock_library_versions` namespace.
 
 ## Development
 
