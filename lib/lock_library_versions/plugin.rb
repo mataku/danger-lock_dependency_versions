@@ -6,19 +6,23 @@ module Danger
       files = git.modified_files
       lock_list.keys.each do |file|
         if files.include?(file.to_s) && !(files.include?(lock_list[file]))
-          message(warning_mode, file)
+          comment(warning_mode, file)
         end
       end
     end
 
     private
 
-    def message(warning_mode, file)
+    def comment(warning_mode, file)
       if warning_mode
-        warn("`#{lock_list[file]}` should be committed.")
+        warn(error_message(file))
       else
-        fail("`#{lock_list[file]}` should be committed.")
+        fail(error_message(file))
       end
+    end
+
+    def error_message(file)
+      "`#{file.to_s}` has changed. `#{lock_list[file]}` should be committed."
     end
 
     def lock_list
