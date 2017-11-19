@@ -6,11 +6,11 @@ require 'lock_library_versions/gem_version.rb'
 Gem::Specification.new do |spec|
   spec.name          = 'danger-lock_library_versions'
   spec.version       = LockLibraryVersions::VERSION
-  spec.authors       = ['Takuma Homma']
+  spec.authors       = ['mataku']
   spec.email         = ['nagomimatcha@gmail.com']
   spec.description   = %q{A Danger plugin to check whether version lockfile is committed or not}
   spec.summary       = %q{A Danger plugin to check whether version lockfile is committed or not}
-  spec.homepage      = 'https://github.com/Takuma Homma/danger-lock_library_versions'
+  spec.homepage      = 'https://github.com/mataku/danger-lock_library_versions'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($/)
