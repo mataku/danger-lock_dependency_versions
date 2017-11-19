@@ -1,28 +1,22 @@
-require 'yaml'
-
 module Danger
-  # This is your plugin class. Any attributes or methods you expose here will
-  # be available from within your Dangerfile.
-  #
-  # To be published on the Danger plugins site, you will need to have
-  # the public interface documented. Danger uses [YARD](http://yardoc.org/)
-  # for generating documentation from your plugin source, and you can verify
-  # by running `danger plugins lint` or `bundle exec rake spec`.
-  #
-  # You should replace these comments with a public description of your library.
-  
   class DangerLockLibraryVersions < Plugin
     def check
-      modified_files = git.modified_files
+      files = git.modified_files
       lock_list.keys.each do |file|
-        if modified_files.include?(file)
+        if files.include?(file.to_s) && !(files.include?(lock_list[file]))
           fail("#{lock_list[file]} should be committed")
         end
       end
     end
 
+    private
+
     def lock_list
-      @list ||= YAML.load_file('./lib/lock_library_versions/list.yml')
+      {
+        'Gemfile': 'Gemfile.lock',
+        'Cartfile': 'Cartfile.resolved',
+        'Podfile': 'Podfile.lock'
+      }
     end
   end
 end
