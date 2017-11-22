@@ -4,7 +4,7 @@
 
 A [Danger](http://danger.systems/ruby/) plugin for managing dependency files.
 
-Check files which should be committed to version control (e.g., `Gemfile` and `Gemfile.lock`, `Cartfile` and `Cartfile.resolved`).
+Check files which should be committed together to version control (e.g., `Gemfile` and `Gemfile.lock`, `Cartfile` and `Cartfile.resolved`).
 
 ## Installation
 
