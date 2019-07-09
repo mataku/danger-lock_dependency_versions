@@ -27,7 +27,7 @@ Add to Dangerfile.
 
 ```
 # Optional: you can specify yml file path (default: ./lock_list.yml)
-# lock_dependency_versions.lock_file = './scripts/file.yml'
+# lock_dependency_versions.lock_list_file = './scripts/file.yml'
 lock_dependency_versions.check
 ```
 
