@@ -2,6 +2,13 @@ require 'yaml'
 
 module Danger
   class DangerLockDependencyVersions < Plugin
+    attr_accessor :lock_list_file
+
+    def lock_list_file
+      @lock_list_file || '.lock_list.yml'
+    end
+
+
     def check(config = nil)
       config = config.is_a?(Hash) ? config : { }
       warning_mode = config[:warning] || false
@@ -28,7 +35,7 @@ module Danger
     end
 
     def lock_list
-      YAML.load_file('.lock_list.yml')
+      YAML.load_file(lock_list_file)
     end
   end
 end

@@ -18,6 +18,22 @@ module Danger
       expect(Danger::DangerLockDependencyVersions < Danger::Plugin).to be_truthy
     end
 
+    describe '#lock_list_file' do
+      let(:modified_files) { [] }
+      let(:file) { './scripts/lock_file.yml' }
+
+      before do
+        allow(YAML).to receive(:load_file).with(file).and_return(load_data)
+        allow_any_instance_of(git_plugin).to receive(:modified_files).and_return(modified_files)
+      end
+      
+      it do
+        plugin.lock_list_file = file
+        plugin.check
+        expect(dangerfile.status_report[:errors].length).to be == 0
+      end
+    end
+
     describe "#check" do
       let(:modified_files) { [] }
 
