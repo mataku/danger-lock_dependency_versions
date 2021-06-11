@@ -10,8 +10,8 @@ Check files which should be committed together to version control (e.g., `Gemfil
 
 Add this line to your Gemfile:
 
-```
-$ gem danger-lock_dependency_versions
+```shell
+gem danger-lock_dependency_versions
 ```
 
 ## Usage
